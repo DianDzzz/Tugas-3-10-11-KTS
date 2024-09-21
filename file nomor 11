@@ -1,0 +1,22 @@
+# Program untuk mencari kode brankas ujian
+import sys  # import fungsi untuk memberhentikan program
+
+def rumus_kode(S):
+    kode = ""
+    for huruf in S:
+        if huruf not in kode:
+            kode += huruf
+    return kode
+
+print("Silahkan input karakter untuk mendapat kode brankas!")   # judul program
+S = input() # input karakter yang akan di konversi ke sandi
+
+if len(S) <= 1 or len(S) > 100000:
+    print("Jumlah karakter tidak valid!")
+    sys.exit()
+else:
+    kode_jadi = rumus_kode(S)
+    kode = kode_jadi.replace(" ", "")
+    print()
+    print("Kode dari brankas adalah:")
+    print(kode)
