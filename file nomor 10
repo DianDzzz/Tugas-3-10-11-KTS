@@ -1,0 +1,97 @@
+# program pengenkripsi dan pendekripsi pesan/tulisan
+
+import sys  # import fungsi 
+
+def Proses(kalimat, K, C):
+    kalimat_proses = ""     # wadah kosong untuk kalimat yang akan di proses
+    for huruf in kalimat:   # mengecek huruf di kalimat
+        if huruf.isalpha(): # mengecek apakah alphabet atau bukan
+            if huruf.islower(): # mengecek apakah huruf kapital atau tidak
+                if C == 1:
+                    kalimat_proses += chr(((ord(huruf) - ord("a") + K) % 26) + ord("a"))
+                if C == 2:
+                    kalimat_proses += chr(((ord(huruf) - ord("a") - K) % 26) + ord("a"))
+            else:
+                if C == 1:
+                    kalimat_proses += chr(((ord(huruf) - ord("A") + K) % 26) + ord("A"))
+                if C == 2:
+                    kalimat_proses += chr(((ord(huruf) - ord("A") - K) % 26) + ord("A"))
+        else:
+            kalimat_proses += huruf # menambahkan hasil proses dengan tanda baca/karakter lainnya yang tidak di proses
+    return kalimat_proses   # mengembalikan nilai ke variabel ini
+
+print("Program peng-enkripsi/dekrpisi pesan!")
+
+print("Silahkan masukkan jumlah pesan yang akan di proses(0-100)!")
+T = int(input())    # input jumlah pe# program pengenkripsi dan pendekripsi pesan/tulisan
+
+import sys  # import fungsi 
+
+def Proses(kalimat, K, C):
+    kalimat_proses = ""     # wadah kosong untuk kalimat yang akan di proses
+    for huruf in kalimat:   # mengecek huruf di kalimat
+        if huruf.isalpha(): # mengecek apakah alphabet atau bukan
+            if huruf.islower(): # mengecek apakah huruf kapital atau tidak
+                if C == 1:
+                    kalimat_proses += chr(((ord(huruf) - ord("a") + K) % 26) + ord("a"))
+                if C == 2:
+                    kalimat_proses += chr(((ord(huruf) - ord("a") - K) % 26) + ord("a"))
+            else:
+                if C == 1:
+                    kalimat_proses += chr(((ord(huruf) - ord("A") + K) % 26) + ord("A"))
+                if C == 2:
+                    kalimat_proses += chr(((ord(huruf) - ord("A") - K) % 26) + ord("A"))
+        else:
+            kalimat_proses += huruf # menambahkan hasil proses dengan tanda baca/karakter lainnya yang tidak di proses
+    return kalimat_proses   # mengembalikan nilai ke variabel ini
+
+print("Program peng-enkripsi/dekrpisi pesan!")
+
+print("Silahkan masukkan jumlah pesan yang akan di proses(0-100)!")
+T = int(input())    # input jumlah pesan yang akan di enkripsi/dekripsi
+if T == 0:  # mengecek apakah T bernilai 0
+    print()
+    print("baiklah, tidak ada kalimat yang akan di proses, semoga harimu menyenangkan!")
+elif T < 0 or T > 100:  # mengecek apakah T bernilai sesuai interval yang diberikan
+    print("Nilai tidak valid")
+else:
+    print()
+    for x in range(T):  # perulangan sesuai jumlah T
+        print("Silahkan masukkan tipe pemrosesan(1 atau 2) dan masukkan jumlah pergeseran(0-26)!")
+        C, K = map(int, input().split())    # input tipe pemrosesan, 1 = enkripsi dan 2 = dekripsi => (C), input jumlah pergeseran => (K)
+        if C < 1 or C > 2:  # mengecek apakah C bernilai sesuai interval
+            print("nilai C tidak valid!")
+        else:
+            if K < 0 or K > 26: # mengecek apakah K bernilai sesuai interval
+                print("nilai K tidak valid!")
+                sys.exit()
+            else:
+                print("Silahkan masukkan kalimat yang akan di enkripsi/dekripsi ")
+                kalimat = input()   # input kalimat yang akan di enkripsi
+
+                kalimat_baru = Proses(kalimat, K, C)
+                print(kalimat_baru)
+                print()san yang akan di enkripsi/dekripsi
+if T == 0:  # mengecek apakah T bernilai 0
+    print()
+    print("baiklah, tidak ada kalimat yang akan di proses, semoga harimu menyenangkan!")
+elif T < 0 or T > 100:  # mengecek apakah T bernilai sesuai interval yang diberikan
+    print("Nilai tidak valid")
+else:
+    print()
+    for x in range(T):  # perulangan sesuai jumlah T
+        print("Silahkan masukkan tipe pemrosesan(1 atau 2) dan masukkan jumlah pergeseran(0-26)!")
+        C, K = map(int, input().split())    # input tipe pemrosesan, 1 = enkripsi dan 2 = dekripsi => (C), input jumlah pergeseran => (K)
+        if C < 1 or C > 2:  # mengecek apakah C bernilai sesuai interval
+            print("nilai C tidak valid!")
+        else:
+            if K < 0 or K > 26: # mengecek apakah K bernilai sesuai interval
+                print("nilai K tidak valid!")
+                sys.exit()
+            else:
+                print("Silahkan masukkan kalimat yang akan di enkripsi/dekripsi ")
+                kalimat = input()   # input kalimat yang akan di enkripsi
+
+                kalimat_baru = Proses(kalimat, K, C)
+                print(kalimat_baru)
+                print()
