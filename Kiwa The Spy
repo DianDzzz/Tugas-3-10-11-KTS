@@ -1,0 +1,56 @@
+# program untuk mengenkripsi/dekripsi pesan kiwa the spy
+
+import sys
+kode_enkripsi = [19, 17, 20, 4, 18, 10, 8, 11, 11]
+kode_dekripsi = [7, 9, 6, 22, 8, 16, 18, 15, 15]
+
+def Proses(T, K, M):
+    kalimat_proses = ""                 # wadah kosong untuk kalimat yang akan di proses
+    for x in range(T):
+        index_kode = 0
+        for huruf in M:   # mengecek huruf di kalimat
+            if huruf.isalpha():         # mengecek apakah alphabet atau bukan
+                if huruf.islower():     # mengecek apakah huruf kapital atau tidak
+                    print("Huruf harus dalam bentuk kapital!")
+                    sys.exit()          # menghentikan program jika ada huruf yang tidak kapital
+                elif huruf.isupper():
+                    if K == 0:
+                        kode = kode_enkripsi[index_kode % 9]
+                        kalimat_proses += chr(((ord(huruf) - ord("A") + kode) % 26) + ord("A"))
+                    elif K == 1:
+                        kode = kode_dekripsi[index_kode % 9]
+                        kalimat_proses += chr(((ord(huruf) - ord("A") + kode) % 26) + ord("A"))
+                index_kode += 1
+            elif huruf.isspace():
+                kalimat_proses += huruf                
+            else:
+                print("Pesan hanya boleh berisi huruf dna spasi!")
+                sys.exit()
+    return kalimat_proses               # mengembalikan nilai ke variabel ini
+
+print("Masukkan jumlah perulangan enkripsi(T): ")
+T = int(input())                    # input T yang merupakan jumlah enkripsi/dekripsi yang akan dilakukan
+print()
+if T < 1 or T > 15:
+    print("Nilai T tidak valid!")
+    sys.exit()
+
+print("Masukkan tipe proses(0 = enkripsi, 1 = dekripsi)(K): ")
+K = int(input())                    # input K yang merupakan tipe proses, 0=enkripsi, 1=dekripsi
+print()
+if K < 0 or K > 1:
+    print("Nilai K tidak valid!")
+    sys.exit()
+
+print("Masukkan pesan yang akan di enkripsi/dekripsi(M): ")
+M = input()                         # input M yang merupakan pesan yang akan di proses
+print()
+if len(M) < 1:
+    print("Tidak ada pesan yang di proses!")
+    sys.exit()
+elif len(M) > 1000:
+    print("Pesan terlalu panjang!")
+    sys.exit()
+else:
+    hasil = Proses(T, K, M)
+    print(hasil)
